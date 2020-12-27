@@ -1,6 +1,6 @@
 local blip = nil
 local radiusBlip = nil
-local inZone = nil
+local inZone = nil                                                                     
 local zones = {}
 
 AddEventHandler("adminzone:inZone", function (coords, pass)
@@ -14,8 +14,8 @@ AddEventHandler("adminzone:inZone", function (coords, pass)
 			SetBlipAsShortRange(blip, true)
 			SetBlipColour(blip, Config.blipColor)
 			SetBlipScale(blip, 1.0)
-			BeginTextCommandSetBlipName('STRING')
-			AddTextComponentString('ADMIN ZONE')
+			AddTextEntry("adminzoneblip", Config.blipName)
+			BeginTextCommandSetBlipName('adminzoneblip')
 			EndTextCommandSetBlipName(blip)
 			SetBlipAlpha(radiusBlip, 80)
 			SetBlipColour(radiusBlip, Config.blipColor)
@@ -25,26 +25,27 @@ AddEventHandler("adminzone:inZone", function (coords, pass)
 				SetTextFont(0)
 				SetTextCentre(true)
 				SetTextProportional(1)
-				SetTextScale(0.7, 0.7)
+				SetTextScale(Config.notificationScale, Config.notificationScale)
 				SetTextColour(128, 128, 128, 255)
 				SetTextDropshadow(0, 0, 0, 0, 255)
 				SetTextEdge(1, 0, 0, 0, 255)
 				SetTextDropShadow()
 				SetTextOutline()
-				SetTextEntry("STRING")
-				AddTextComponentString(Config.enterText)
-				DrawText(.5, 0.73)
-				
-				if IsControlPressed(0, 106) then
-					ShowNotif("~r~You are currently in an ADMIN ZONE. ~n~~s~You cannot shoot! Please remain clear of the situation")
+				AddTextEntry("adminzonenotif", Config.notificationText)
+				SetTextEntry("adminzonenotif")
+				DrawText(Config.notificationLocx, Config.notificationLocy)
+				if Config.disabledViolence then
+					if IsControlPressed(0, 106) then
+						ShowNotif(Config.disabledViolencetext)
+					end
+					SetPlayerCanDoDriveBy(PlayerPedId(), false)
+					DisablePlayerFiring(PlayerPedId(), true)
+					DisableControlAction(0, 140) -- Melee R
 				end
-				SetPlayerCanDoDriveBy(PlayerPedId(), false)
-				DisablePlayerFiring(PlayerPedId(), true)
-				DisableControlAction(0, 140) -- Melee R\
 				local veh = GetVehiclePedIsIn(PlayerPedId())
 				if GetPedInVehicleSeat(veh, -1) == PlayerPedId() then
 					if math.ceil(GetEntitySpeed(veh) * 2.23) > Config.maxSpeed then
-						ShowNotif("~r~You are currently in an ADMIN ZONE. ~n~~s~Slow down and remain clear of the situation.")
+						ShowNotif(Config.speedingText)
 					end
 				end
 			end
@@ -57,7 +58,7 @@ end)
 function exitZone()
     RemoveBlip(blip)
     RemoveBlip(radiusBlip)
-    ShowNotif("~g~You have exited the ADMIN ZONE!  You may resume regular RP!")
+    ShowNotif(Config.exitText)
 	inZone = nil
 end
 
@@ -75,7 +76,7 @@ function ZoneAdded()
 				 for k,v in pairs(zones) do
 					if GetDistanceBetweenCoords(v.coord, GetEntityCoords(GetPlayerPed(-1))) <= 100 then
 						if inZone == nil then
-							ShowNotif("~r~You have entered an ADMIN ZONE ~n~~s~ RP, Violence, and Speeding is not tolerated.")
+							ShowNotif(Config.enterText)
 							TriggerEvent('adminzone:inZone', v.coord, Config.pass)
 							break
 						end
@@ -91,7 +92,7 @@ function ZoneAdded()
 			if inZone ~= nil then
 			    RemoveBlip(blip)
 				RemoveBlip(radiusBlip)
-				ShowNotif("~g~The ADMIN ZONE has been cleared!  You may resume regular RP!")
+				ShowNotif(Config.clearText)
 				inZone = nil
 			end
 		end
