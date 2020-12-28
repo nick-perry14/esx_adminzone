@@ -9,18 +9,17 @@
 ## About
 ### Admin Zones
 This is a simple admin project that allows users of a specific group to set an "Admin Zone".  These zones automatically:
-- Disable Firing
-- Disable Meele
+- Disable Firing (Only inside the zone)
+- Disable Meele (Only inside the zone)
 - Notifies player upon entering/leaving zone
 - Draws a notification on the screen
 - Adds a ***TEMPORARY*** blip that shows on users map.  (Additional info below)
 - Warns players who are speeeding to slow down.
 
 Upon removing the zones, the resource:
-- Ungods the player
-- Returns their ESX Job back to where it was before
-- Removes the admin vehicle (unreliable at the current point)
-- Resets the player's ped to the ESX skin (looking to change to last ped to work with EUP)
+- Removes the temporary blip
+- Re-Enables shooting and violence
+- Notifies players of zone clear
 
 ## Commands
 - /setzone - Enables the admin zone around the admin
