@@ -84,9 +84,9 @@ AddEventHandler('adminzone:sendCoords', function(command, coords)
 	end
 end)
 
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(xPlayer)
-	TriggerClientEvent('adminzone:UpdateZones', xPlayer.source, zones, Config.pass)
+RegisterNetEvent('adminzone:ServerUpdateZone')
+AddEventHandler('adminzone:ServerUpdateZone', function()
+	TriggerClientEvent('adminzone:UpdateZones', source, zones, Config.pass)
 end)
 
 function isAuthed(xPlayer)

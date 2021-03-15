@@ -117,3 +117,8 @@ AddEventHandler("adminzone:getCoords", function(command, pass)
 	end
 end)
     
+	
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+	TriggerServerEvent('adminzone:ServerUpdateZone')
+end)
