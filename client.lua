@@ -34,7 +34,7 @@ AddEventHandler("adminzone:inZone", function (coords, pass)
 				AddTextEntry("adminzonenotif", Config.notificationText)
 				SetTextEntry("adminzonenotif")
 				DrawText(Config.notificationLocx, Config.notificationLocy)
-				if Config.disabledViolence then
+				if Config.disableViolence then
 					if IsControlPressed(0, 106) then
 						ShowNotif(Config.disabledViolencetext)
 					end
