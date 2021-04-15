@@ -3,9 +3,9 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/nick-perry14/esx_adminzone)](#)
 [![Maintenance](https://img.shields.io/maintenance/yes/2021)](#)
 [![Repository Views](https://komarev.com/ghpvc/?username=nick-perry14-esx-admin-zone&label=Repository+Hits&style=flat&color=brightgreen)](#)
-[![GitHub all releases](https://img.shields.io/github/downloads/nick-perry14/esx_adminzone/total)](https://github.com/nick-perry14/esx_adminmode/releases)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/nick-perry14/esx_adminzone)](https://github.com/nick-perry14/esx_adminmode/releases/latest)
-[![GitHub issues](https://img.shields.io/github/issues/nick-perry14/esx_adminzone)](https://github.com/nick-perry14/esx_adminmode/issues)
+[![GitHub all releases](https://img.shields.io/github/downloads/nick-perry14/esx_adminzone/total)](https://github.com/nick-perry14/esx_adminzone/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/nick-perry14/esx_adminzone)](https://github.com/nick-perry14/esx_adminzone/releases/latest)
+[![GitHub issues](https://img.shields.io/github/issues/nick-perry14/esx_adminzone)](https://github.com/nick-perry14/esx_adminzone/issues)
 
 ## About
 ### Admin Zones
